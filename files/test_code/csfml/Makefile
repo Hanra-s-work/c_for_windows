@@ -27,6 +27,8 @@ CFLAGS	=	-Wall -Wextra
 
 CPPFLAGS	=	-I./include
 
+CSFMLFLAGS	=	-lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+
 NAME	=	test_file
 
 ARCH_32_NAME	=	$(NAME)$(ARCH_32_DESCRIMINATOR)$(WINDOWS_EXTENSION)
@@ -38,11 +40,11 @@ all:	$(OBJ) complin
 allplat: $(OBJ) complin comp32 comp64
 
 comp32:
-	$(WINDOWS32_COMPILER) -o $(ARCH_32_NAME) $(SRC) $(CFLAGS) $(CPPFLAGS)
+	$(WINDOWS32_COMPILER) -o $(ARCH_32_NAME) $(SRC) $(CFLAGS) $(CPPFLAGS) $(CSFMLFLAGS)
 comp64:
-	$(WINDOWS64_COMPILER) -o $(ARCH_64_NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS)
+	$(WINDOWS64_COMPILER) -o $(ARCH_64_NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(CSFMLFLAGS)
 complin:
-	$(LINUX_COMPILER) -o $(LINUX_NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS)
+	$(LINUX_COMPILER) -o $(LINUX_NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(CSFMLFLAGS)
 
 help:
 	$(QUIET)echo "USAGE:"
